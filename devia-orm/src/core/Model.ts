@@ -1,18 +1,13 @@
 import { Database } from "./Database";
 import { QueryBuilder } from "./QueryBuilder";
-import {
-  FindOptions,
-  UpdateOptions,
-  DestroyOptions,
-  QueryResult,
-} from "./Types";
+import { FindOptions, UpdateOptions, DestroyOptions } from "./Types";
 import { MetadataStorage } from "../utils/MetadataStorage";
 
 /**
  * Classe de base pour tous les modèles
  * T = Type des attributs du modèle (interface)
  */
-export abstract class Model<T extends Record<string, any>> {
+export abstract class Model<_T extends Record<string, any>> {
   /**
    * Nom de la table (doit être défini par @Table ou manuellement)
    */

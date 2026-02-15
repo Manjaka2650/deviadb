@@ -8,8 +8,7 @@
   "exports": {
     ".": {
       "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/index.mjs"
     }
   },
   "files": [
@@ -38,6 +37,7 @@
     "expo-sqlite": "^15.0.0"
   },
   "devDependencies": {
+    "@swc/core": "^1.15.11",
     "@types/node": "^20.11.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.3"
