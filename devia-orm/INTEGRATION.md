@@ -1,6 +1,6 @@
 # 🔧 Guide d'intégration dans une app Expo
 
-Ce guide vous montre comment intégrer expo-mini-orm dans votre application Expo/React Native.
+Ce guide vous montre comment intégrer devia-orm dans votre application Expo/React Native.
 
 ## 📋 Prérequis
 
@@ -14,7 +14,7 @@ Ce guide vous montre comment intégrer expo-mini-orm dans votre application Expo
 
 ```bash
 npx expo install expo-sqlite
-npm install expo-mini-orm
+npm install devia-orm
 ```
 
 ### 2. Configurer TypeScript
@@ -25,7 +25,7 @@ Modifiez votre `tsconfig.json` :
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "emitDecoratorMetadata": true
     // ... autres options
   }
 }
@@ -63,7 +63,7 @@ src/
 ### database/config.ts
 
 ```typescript
-import { Database } from "expo-mini-orm";
+import { Database } from "devia-orm";
 
 export const DB_NAME = "myapp.db";
 
@@ -77,7 +77,7 @@ export async function initDatabase() {
 ### models/User.ts
 
 ```typescript
-import { Model, Table, Column, PrimaryKey, Unique, NotNull } from "expo-mini-orm";
+import { Model, Table, Column, PrimaryKey, Unique, NotNull } from "devia-orm";
 
 export interface UserAttributes {
   id?: number;
@@ -144,14 +144,14 @@ export default function App() {
       try {
         // Initialiser la DB
         await initDatabase();
-        
+
         // Synchroniser les modèles
         await syncModels();
-        
+
         // Charger les données
         const allUsers = await User.findAll();
         setUsers(allUsers);
-        
+
         setIsReady(true);
       } catch (error) {
         console.error("Error preparing app:", error);
@@ -367,7 +367,7 @@ Pour changer le schéma de la base de données :
 
 ```typescript
 // database/migrations.ts
-import { Database } from "expo-mini-orm";
+import { Database } from "devia-orm";
 
 export async function runMigrations() {
   const db = Database.getInstance();
@@ -431,16 +431,19 @@ describe("User Model", () => {
 ## 📝 Bonnes pratiques
 
 1. **Toujours initialiser la DB avant l'utilisation**
+
    ```typescript
    await Database.getInstance().initialize();
    ```
 
 2. **Synchroniser les modèles au démarrage**
+
    ```typescript
    await Model.sync();
    ```
 
 3. **Gérer les erreurs**
+
    ```typescript
    try {
      await User.create(data);
@@ -455,6 +458,7 @@ describe("User Model", () => {
    - Rend le code réutilisable
 
 5. **Ne pas synchroniser en production avec force: true**
+
    ```typescript
    // ❌ Mauvais
    await User.sync({ force: true }); // Supprime les données !

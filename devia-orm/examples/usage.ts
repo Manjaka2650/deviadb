@@ -1,10 +1,19 @@
 /**
- * EXEMPLE D'UTILISATION - expo-mini-orm
- * 
+ * EXEMPLE D'UTILISATION - devia-orm
+ *
  * Ce fichier montre comment utiliser l'ORM dans une application Expo
  */
 
-import { Database, Model, Table, Column, PrimaryKey, Unique, NotNull, Default } from "expo-mini-orm";
+import {
+  Database,
+  Model,
+  Table,
+  Column,
+  PrimaryKey,
+  Unique,
+  NotNull,
+  Default,
+} from "devia-orm";
 
 // ============================================================================
 // 1. DÉFINITION DES INTERFACES
@@ -111,15 +120,15 @@ class Product extends Model<ProductAttributes> {
 
 async function initDatabase() {
   console.log("🚀 Initialisation de la base de données...");
-  
+
   // Initialiser la connexion
   await Database.getInstance().initialize("myapp.db");
-  
+
   // Synchroniser les modèles (créer les tables)
   await User.sync();
   await Achat.sync();
   await Product.sync();
-  
+
   console.log("✅ Base de données initialisée");
 }
 
@@ -129,7 +138,7 @@ async function initDatabase() {
 
 async function exemplesCRUD() {
   console.log("\n📝 === EXEMPLES CREATE ===");
-  
+
   // Créer des utilisateurs
   const user1 = await User.create({
     email: "john@example.com",
@@ -192,7 +201,7 @@ async function exemplesCRUD() {
   });
 
   console.log("\n📖 === EXEMPLES READ ===");
-  
+
   // Trouver tous les utilisateurs
   const allUsers = await User.findAll();
   console.log("Tous les utilisateurs:", allUsers);
@@ -240,12 +249,9 @@ async function exemplesCRUD() {
   console.log("Produits 'Phone':", phones);
 
   console.log("\n✏️ === EXEMPLES UPDATE ===");
-  
+
   // Mettre à jour un utilisateur
-  const updated = await User.update(
-    { age: 31 },
-    { where: { id: user1.id! } }
-  );
+  const updated = await User.update({ age: 31 }, { where: { id: user1.id! } });
   console.log(`${updated} utilisateur(s) mis à jour`);
 
   // Vérifier la mise à jour
@@ -253,13 +259,10 @@ async function exemplesCRUD() {
   console.log("John après update:", johnUpdated);
 
   // Mettre à jour le stock
-  await Product.update(
-    { stock: 45 },
-    { where: { name: "iPhone 15" } }
-  );
+  await Product.update({ stock: 45 }, { where: { name: "iPhone 15" } });
 
   console.log("\n🔢 === EXEMPLES COUNT ===");
-  
+
   const totalUsers = await User.count();
   console.log("Nombre total d'utilisateurs:", totalUsers);
 
@@ -274,7 +277,7 @@ async function exemplesCRUD() {
   console.log("Produits > 1000€:", expensiveProducts);
 
   console.log("\n🗑️ === EXEMPLES DELETE ===");
-  
+
   // Supprimer un achat
   const deleted = await Achat.destroy({
     where: { montant: { $lt: 50 } },
@@ -288,7 +291,7 @@ async function exemplesCRUD() {
 
 async function exemplesAvances() {
   console.log("\n🚀 === EXEMPLES AVANCÉS ===");
-  
+
   // WHERE avec plusieurs conditions
   const complexQuery = await Product.findAll({
     where: {

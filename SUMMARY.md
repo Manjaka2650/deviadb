@@ -5,7 +5,7 @@
 ### 🏗️ Architecture du Package
 
 ```
-expo-mini-orm/
+devia-orm/
 │
 ├── 📁 src/                          # Code source
 │   ├── 📁 core/                     # Cœur de l'ORM
@@ -45,6 +45,7 @@ expo-mini-orm/
 ## 🎯 ÉTAPES RÉALISÉES (selon le prompt)
 
 ### ✅ ÉTAPE 1 - Core Database
+
 - [x] Classe Database singleton
 - [x] Méthode `initialize(dbName)`
 - [x] Méthode `execute(sql, params)`
@@ -52,6 +53,7 @@ expo-mini-orm/
 - [x] Gestion des erreurs
 
 ### ✅ ÉTAPE 2 - QueryBuilder
+
 - [x] Génération SELECT
 - [x] Génération INSERT
 - [x] Génération UPDATE
@@ -61,6 +63,7 @@ expo-mini-orm/
 - [x] Support des opérateurs ($gt, $lt, $like, $in, etc.)
 
 ### ✅ ÉTAPE 3 - Classe Model
+
 - [x] Classe abstraite `Model<T>`
 - [x] Méthode `findAll()`
 - [x] Méthode `findOne()`
@@ -71,6 +74,7 @@ expo-mini-orm/
 - [x] Méthode `count()`
 
 ### ✅ ÉTAPE 4 - Typage avancé
+
 - [x] Générics `Model<T>`
 - [x] `create()` accepte `Omit<T, "id">`
 - [x] `update()` accepte `Partial<T>`
@@ -79,6 +83,7 @@ expo-mini-orm/
 - [x] Autocomplete complet
 
 ### ✅ ÉTAPE 5 - Décorateurs
+
 - [x] `@Table(name)` - Nom de table
 - [x] `@Column(type)` - Définir colonne
 - [x] `@PrimaryKey()` - Clé primaire
@@ -89,12 +94,14 @@ expo-mini-orm/
 - [x] Système de métadonnées
 
 ### ✅ ÉTAPE 6 - Auto Create Table
+
 - [x] Méthode `Model.sync()`
 - [x] Génération CREATE TABLE
 - [x] Basé sur les décorateurs
 - [x] Option `force: true` pour recréer
 
 ### ✅ ÉTAPE 7 - Packaging
+
 - [x] `package.json` configuré
 - [x] `tsconfig.json` configuré
 - [x] Build avec `tsup`
@@ -103,6 +110,7 @@ expo-mini-orm/
 - [x] Guide `npm link` pour tests locaux
 
 ### ✅ ÉTAPE 8 - Opérateurs avancés
+
 - [x] `$gt` - Plus grand que
 - [x] `$gte` - Plus grand ou égal
 - [x] `$lt` - Plus petit que
@@ -112,6 +120,7 @@ expo-mini-orm/
 - [x] `$in` - Dans une liste
 
 ### ✅ ÉTAPE 9 - Architecture propre
+
 - [x] Séparation Database / QueryBuilder / Model
 - [x] MetadataStorage pour les décorateurs
 - [x] Code modulaire et maintenable
@@ -122,6 +131,7 @@ expo-mini-orm/
 ## 🚀 BONUS IMPLÉMENTÉS
 
 ### ✅ Documentation complète
+
 - README avec API complète
 - Guide d'intégration Expo
 - Guide des features avancées
@@ -129,11 +139,13 @@ expo-mini-orm/
 - Quickstart
 
 ### ✅ Exemples
+
 - Fichier `examples/usage.ts` avec tous les cas d'usage
 - Modèles User, Achat, Product
 - Tests complets
 
 ### ✅ Configuration build
+
 - tsup pour build rapide
 - Support CJS + ESM
 - Génération types .d.ts
@@ -145,38 +157,45 @@ expo-mini-orm/
 Voir `ADVANCED.md` pour les implémentations :
 
 ### 🎣 Hooks
+
 - beforeCreate, afterCreate
 - beforeUpdate, afterUpdate
 - beforeDestroy, afterDestroy
 - beforeFind, afterFind
 
 ### 🗑️ Soft Delete
+
 - Colonne `deletedAt`
 - `Model.destroy()` met à jour au lieu de supprimer
 - `Model.findAll()` exclut les soft deleted
 - `Model.restore()` pour restaurer
 
 ### 🔗 Relations
+
 - `@HasMany` - Un à plusieurs
 - `@BelongsTo` - Plusieurs à un
 - `@HasOne` - Un à un
 - Eager loading avec `include: ["relation"]`
 
 ### 💾 Transactions
+
 - Déjà implémenté dans Database.ts !
 - `Database.transaction(callback)`
 
 ### 🔍 Scopes
+
 - Requêtes prédéfinies réutilisables
 - `Model.scope("active").findAll()`
 
 ### 📊 Agrégations
+
 - `Model.sum(column)`
 - `Model.avg(column)`
 - `Model.min(column)`
 - `Model.max(column)`
 
 ### ✅ Validation
+
 - Décorateur `@Validate`
 - Validators prédéfinis (email, minLength, etc.)
 - Validation automatique avant create/update
@@ -185,20 +204,20 @@ Voir `ADVANCED.md` pour les implémentations :
 
 ## 📊 Comparaison avec l'objectif
 
-| Fonctionnalité demandée | Statut | Notes |
-|-------------------------|--------|-------|
-| `await Model.findAll()` | ✅ | Implémenté |
-| `await Model.findAll({ where: { userId: 1 } })` | ✅ | Implémenté |
-| `await Model.create({ ... })` | ✅ | Implémenté |
-| `await Model.update({ ... }, { where: { ... } })` | ✅ | Implémenté |
-| `await Model.destroy({ where: { ... } })` | ✅ | Implémenté |
-| Sans jamais écrire de SQL | ✅ | SQL totalement caché |
-| Package node_modules style | ✅ | Prêt pour npm |
-| Full TypeScript typé | ✅ | Typage complet |
-| Décorateurs | ✅ | @Table, @Column, etc. |
-| Auto create table | ✅ | Model.sync() |
-| Opérateurs | ✅ | $gt, $lt, $like, $in |
-| Architecture propre | ✅ | Modulaire et maintenable |
+| Fonctionnalité demandée                           | Statut | Notes                    |
+| ------------------------------------------------- | ------ | ------------------------ |
+| `await Model.findAll()`                           | ✅     | Implémenté               |
+| `await Model.findAll({ where: { userId: 1 } })`   | ✅     | Implémenté               |
+| `await Model.create({ ... })`                     | ✅     | Implémenté               |
+| `await Model.update({ ... }, { where: { ... } })` | ✅     | Implémenté               |
+| `await Model.destroy({ where: { ... } })`         | ✅     | Implémenté               |
+| Sans jamais écrire de SQL                         | ✅     | SQL totalement caché     |
+| Package node_modules style                        | ✅     | Prêt pour npm            |
+| Full TypeScript typé                              | ✅     | Typage complet           |
+| Décorateurs                                       | ✅     | @Table, @Column, etc.    |
+| Auto create table                                 | ✅     | Model.sync()             |
+| Opérateurs                                        | ✅     | $gt, $lt, $like, $in     |
+| Architecture propre                               | ✅     | Modulaire et maintenable |
 
 ---
 
@@ -207,15 +226,16 @@ Voir `ADVANCED.md` pour les implémentations :
 ### 1️⃣ Installation locale (pour tester)
 
 ```bash
-cd expo-mini-orm
+cd devia-orm
 npm install
 npm run build
 npm link
 ```
 
 Puis dans votre app Expo :
+
 ```bash
-npm link expo-mini-orm
+npm link devia-orm
 ```
 
 ### 2️⃣ Utilisation
@@ -223,7 +243,7 @@ npm link expo-mini-orm
 ```typescript
 import "reflect-metadata"; // En haut de App.tsx
 
-import { Database, Model, Table, Column, PrimaryKey } from "expo-mini-orm";
+import { Database, Model, Table, Column, PrimaryKey } from "devia-orm";
 
 // Définir le modèle
 interface UserAttributes {
@@ -266,8 +286,9 @@ npm publish
 ```
 
 Puis les utilisateurs pourront :
+
 ```bash
-npm install expo-mini-orm
+npm install devia-orm
 ```
 
 ---
@@ -337,7 +358,7 @@ Vous avez maintenant :
 R: Oui, après tests approfondis. Commencez par un projet personnel.
 
 **Q: Quelle est la différence avec d'autres ORMs ?**
-R: expo-mini-orm est spécialement conçu pour Expo avec une API simple et un typage TypeScript fort.
+R: devia-orm est spécialement conçu pour Expo avec une API simple et un typage TypeScript fort.
 
 **Q: Les performances sont-elles bonnes ?**
 R: Oui, les requêtes SQL sont optimisées. Pour des cas très complexes, vous pouvez toujours utiliser du SQL brut.

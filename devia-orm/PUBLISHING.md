@@ -1,12 +1,12 @@
 # 📦 Guide de Publication
 
-Ce guide explique comment publier expo-mini-orm sur npm et comment l'utiliser localement.
+Ce guide explique comment publier devia-orm sur npm et comment l'utiliser localement.
 
 ## 🔧 Utilisation locale (npm link)
 
 Pour tester le package localement dans votre app Expo :
 
-### 1. Dans le dossier expo-mini-orm
+### 1. Dans le dossier devia-orm
 
 ```bash
 # Installer les dépendances
@@ -23,22 +23,22 @@ npm link
 
 ```bash
 # Lier le package local
-npm link expo-mini-orm
+npm link devia-orm
 ```
 
 ### 3. Utiliser normalement
 
 ```typescript
-import { Database, Model, Table } from "expo-mini-orm";
+import { Database, Model, Table } from "devia-orm";
 ```
 
 ### 4. Délier (quand vous avez terminé)
 
 ```bash
 # Dans votre app
-npm unlink expo-mini-orm
+npm unlink devia-orm
 
-# Dans expo-mini-orm
+# Dans devia-orm
 npm unlink
 ```
 
@@ -55,14 +55,14 @@ npm unlink
 
 ```json
 {
-  "name": "expo-mini-orm", // Nom unique sur npm
+  "name": "devia-orm", // Nom unique sur npm
   "version": "1.0.0", // Version sémantique
   "description": "Une ORM TypeScript légère pour Expo SQLite",
   "author": "Votre Nom <email@example.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/votre-username/expo-mini-orm.git"
+    "url": "https://github.com/votre-username/devia-orm.git"
   }
 }
 ```
@@ -75,7 +75,7 @@ npm pack --dry-run
 
 # Ou créer un tarball pour inspecter
 npm pack
-tar -xzf expo-mini-orm-1.0.0.tgz
+tar -xzf devia-orm-1.0.0.tgz
 ```
 
 #### 3. Build le package
@@ -85,6 +85,7 @@ npm run build
 ```
 
 Vérifiez que le dossier `dist/` contient :
+
 - `index.js` (CommonJS)
 - `index.mjs` (ES Modules)
 - `index.d.ts` (Types TypeScript)
@@ -93,11 +94,11 @@ Vérifiez que le dossier `dist/` contient :
 #### 4. Tester localement
 
 ```bash
-# Dans expo-mini-orm
+# Dans devia-orm
 npm pack
 
 # Dans votre app de test
-npm install /chemin/vers/expo-mini-orm-1.0.0.tgz
+npm install /chemin/vers/devia-orm-1.0.0.tgz
 ```
 
 #### 5. Publier
@@ -106,14 +107,14 @@ npm install /chemin/vers/expo-mini-orm-1.0.0.tgz
 # Première publication
 npm publish
 
-# Ou si c'est un package à scope (@votre-scope/expo-mini-orm)
+# Ou si c'est un package à scope (@votre-scope/devia-orm)
 npm publish --access public
 ```
 
 #### 6. Vérifier la publication
 
-- Visitez : https://www.npmjs.com/package/expo-mini-orm
-- Testez : `npm install expo-mini-orm`
+- Visitez : https://www.npmjs.com/package/devia-orm
+- Testez : `npm install devia-orm`
 
 ## 🔄 Mettre à jour une version
 
@@ -173,13 +174,13 @@ Après publication, vous pouvez voir :
 
 ```bash
 # Infos sur votre package
-npm info expo-mini-orm
+npm info devia-orm
 
 # Téléchargements
-npm info expo-mini-orm downloads
+npm info devia-orm downloads
 
 # Versions disponibles
-npm view expo-mini-orm versions
+npm view devia-orm versions
 ```
 
 ## 🔐 Sécurité
@@ -229,6 +230,7 @@ Maintenez un changelog :
 ## [1.0.0] - 2024-02-14
 
 ### Added
+
 - Initial release
 - Core Model class
 - QueryBuilder
@@ -239,16 +241,19 @@ Maintenez un changelog :
 ## [1.1.0] - 2024-02-20
 
 ### Added
+
 - Support des hooks (beforeCreate, afterCreate, etc.)
 - Soft delete
 - Relations (hasMany, belongsTo)
 
 ### Fixed
+
 - Bug dans QueryBuilder avec LIKE
 
 ## [1.1.1] - 2024-02-21
 
 ### Fixed
+
 - Typage TypeScript amélioré
 - Performance des requêtes
 ```
@@ -269,8 +274,8 @@ Créez une release sur GitHub pour chaque version :
 Ajoutez à votre README.md :
 
 ```markdown
-[![npm version](https://badge.fury.io/js/expo-mini-orm.svg)](https://badge.fury.io/js/expo-mini-orm)
-[![npm downloads](https://img.shields.io/npm/dm/expo-mini-orm.svg)](https://www.npmjs.com/package/expo-mini-orm)
+[![npm version](https://badge.fury.io/js/devia-orm.svg)](https://badge.fury.io/js/devia-orm)
+[![npm downloads](https://img.shields.io/npm/dm/devia-orm.svg)](https://www.npmjs.com/package/devia-orm)
 ```
 
 ## 🎯 Marketing
@@ -306,11 +311,11 @@ npm publish
 Votre package est maintenant disponible sur npm !
 
 ```bash
-npm install expo-mini-orm
+npm install devia-orm
 ```
 
 ## 📞 Support
 
-- Issues : https://github.com/votre-username/expo-mini-orm/issues
-- Discussions : https://github.com/votre-username/expo-mini-orm/discussions
+- Issues : https://github.com/votre-username/devia-orm/issues
+- Discussions : https://github.com/votre-username/devia-orm/discussions
 - Email : votre-email@example.com

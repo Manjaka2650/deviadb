@@ -1,9 +1,9 @@
 /**
- * Script de test rapide pour expo-mini-orm
- * 
+ * Script de test rapide pour devia-orm
+ *
  * Ce fichier permet de vérifier rapidement que l'ORM fonctionne correctement.
  * À utiliser dans un environnement Node.js ou avec ts-node.
- * 
+ *
  * ATTENTION: Ce test nécessite une version mock d'expo-sqlite
  * Pour un vrai test, utilisez une app Expo.
  */
@@ -137,10 +137,7 @@ async function runTests() {
 
     // 6. Test UPDATE
     console.log("6️⃣ Test UPDATE...");
-    const updated = await User.update(
-      { age: 31 },
-      { where: { id: 1 } }
-    );
+    const updated = await User.update({ age: 31 }, { where: { id: 1 } });
     console.log("✅ Lignes mises à jour:", updated, "\n");
 
     // 7. Test COUNT
@@ -168,9 +165,8 @@ async function runTests() {
     console.log("✅ Lignes supprimées:", deleted, "\n");
 
     console.log("🎉 === TOUS LES TESTS PASSÉS ! ===");
-    console.log("\n📦 expo-mini-orm fonctionne correctement !");
+    console.log("\n📦 devia-orm fonctionne correctement !");
     console.log("👉 Intégrez-le maintenant dans votre app Expo\n");
-
   } catch (error) {
     console.error("❌ Erreur lors des tests:", error);
     process.exit(1);

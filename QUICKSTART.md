@@ -1,4 +1,4 @@
-# 🚀 Démarrage Rapide - expo-mini-orm
+# 🚀 Démarrage Rapide - devia-orm
 
 ## 📦 Package Créé !
 
@@ -7,7 +7,7 @@ Félicitations ! Vous avez maintenant une ORM TypeScript complète pour Expo SQL
 ## 📂 Structure du Projet
 
 ```
-expo-mini-orm/
+devia-orm/
 ├── src/
 │   ├── core/
 │   │   ├── Database.ts       ✅ Gestion SQLite
@@ -34,6 +34,7 @@ expo-mini-orm/
 ## ✨ Fonctionnalités Implémentées
 
 ### ✅ Core Features
+
 - [x] Classe Model générique
 - [x] CRUD complet (Create, Read, Update, Delete)
 - [x] QueryBuilder automatique
@@ -42,6 +43,7 @@ expo-mini-orm/
 - [x] Auto-génération des tables
 
 ### ✅ Query Features
+
 - [x] `findAll()`, `findOne()`, `findByPk()`
 - [x] `create()`, `update()`, `destroy()`
 - [x] `count()`, `truncate()`
@@ -50,6 +52,7 @@ expo-mini-orm/
 - [x] Opérateurs: $gt, $lt, $gte, $lte, $like, $in, $ne
 
 ### ✅ Decorators
+
 - [x] `@Table(name)` - Nom de table
 - [x] `@Column(type)` - Définir colonne
 - [x] `@PrimaryKey()` - Clé primaire
@@ -59,6 +62,7 @@ expo-mini-orm/
 - [x] `@Default(value)` - Valeur par défaut
 
 ### 📚 Documentation
+
 - [x] README complet avec exemples
 - [x] Guide d'intégration Expo
 - [x] Guide des fonctionnalités avancées
@@ -67,7 +71,7 @@ expo-mini-orm/
 ## 🎯 Exemple d'Utilisation Rapide
 
 ```typescript
-import { Database, Model, Table, Column, PrimaryKey } from "expo-mini-orm";
+import { Database, Model, Table, Column, PrimaryKey } from "devia-orm";
 
 // 1. Définir le modèle
 interface UserAttributes {
@@ -110,13 +114,13 @@ const users = await User.findAll({
 ### Option 1 : Tester Localement
 
 ```bash
-# Dans expo-mini-orm/
+# Dans devia-orm/
 npm install
 npm run build
 npm link
 
 # Dans votre app Expo
-npm link expo-mini-orm
+npm link devia-orm
 ```
 
 Voir `INTEGRATION.md` pour le guide complet.
@@ -135,13 +139,13 @@ Voir `PUBLISHING.md` pour le guide complet.
 
 ## 📖 Documentation Disponible
 
-| Fichier | Description |
-|---------|-------------|
-| `README.md` | Documentation générale et API |
-| `INTEGRATION.md` | Comment intégrer dans une app Expo |
-| `ADVANCED.md` | Hooks, Relations, Transactions, etc. |
-| `PUBLISHING.md` | Comment publier sur npm |
-| `examples/usage.ts` | Exemples d'utilisation complets |
+| Fichier             | Description                          |
+| ------------------- | ------------------------------------ |
+| `README.md`         | Documentation générale et API        |
+| `INTEGRATION.md`    | Comment intégrer dans une app Expo   |
+| `ADVANCED.md`       | Hooks, Relations, Transactions, etc. |
+| `PUBLISHING.md`     | Comment publier sur npm              |
+| `examples/usage.ts` | Exemples d'utilisation complets      |
 
 ## 🎓 Tutoriel Complet
 
@@ -181,7 +185,7 @@ class User extends Model<UserAttributes> {
 ### Étape 2 : Initialiser dans App.tsx
 
 ```typescript
-import { Database } from "expo-mini-orm";
+import { Database } from "devia-orm";
 import { User } from "./models/User";
 
 export default function App() {
@@ -237,6 +241,7 @@ function UserList() {
 ## 🚀 Fonctionnalités Avancées (Optionnel)
 
 Implémentez si besoin (voir `ADVANCED.md`) :
+
 - ⚡ Hooks (beforeCreate, afterUpdate)
 - 🗑️ Soft Delete
 - 🔗 Relations (hasMany, belongsTo)
@@ -247,20 +252,21 @@ Implémentez si besoin (voir `ADVANCED.md`) :
 
 ## 💡 Comparaison avec Sequelize
 
-| Feature | Sequelize | expo-mini-orm |
-|---------|-----------|---------------|
-| Plateforme | Node.js | Expo/React Native |
-| Base de données | PostgreSQL, MySQL, SQLite | Expo SQLite |
-| Taille | ~500KB | ~20KB |
-| Syntaxe | `Model.findAll()` | `Model.findAll()` ✅ |
-| Décorateurs | ❌ | ✅ |
-| TypeScript | Partiel | Full ✅ |
-| Relations | ✅ | ⚠️ À implémenter |
-| Migrations | ✅ | ⚠️ Manuel |
+| Feature         | Sequelize                 | devia-orm            |
+| --------------- | ------------------------- | -------------------- |
+| Plateforme      | Node.js                   | Expo/React Native    |
+| Base de données | PostgreSQL, MySQL, SQLite | Expo SQLite          |
+| Taille          | ~500KB                    | ~20KB                |
+| Syntaxe         | `Model.findAll()`         | `Model.findAll()` ✅ |
+| Décorateurs     | ❌                        | ✅                   |
+| TypeScript      | Partiel                   | Full ✅              |
+| Relations       | ✅                        | ⚠️ À implémenter     |
+| Migrations      | ✅                        | ⚠️ Manuel            |
 
 ## 🎯 Cas d'Usage
 
 ### 1. App de Todo List
+
 ```typescript
 @Table("todos")
 class Todo extends Model<TodoAttributes> {
@@ -276,6 +282,7 @@ const todos = await Todo.findAll({
 ```
 
 ### 2. App de Budget
+
 ```typescript
 @Table("expenses")
 class Expense extends Model<ExpenseAttributes> {
@@ -291,6 +298,7 @@ const totalFood = await Expense.sum("amount", {
 ```
 
 ### 3. App de Contacts
+
 ```typescript
 @Table("contacts")
 class Contact extends Model<ContactAttributes> {

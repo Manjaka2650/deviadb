@@ -1,5 +1,5 @@
 {
-  "name": "expo-mini-orm",
+  "name": "devia-orm",
   "version": "1.0.0",
   "description": "Une ORM TypeScript légère pour Expo SQLite, inspirée de Sequelize",
   "main": "./dist/index.js",
@@ -47,10 +47,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/expo-mini-orm.git"
+    "url": "https://github.com/Manjaka2650/devia-orm.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/expo-mini-orm/issues"
+    "url": "https://github.com/Manjaka2650/devia-orm/issues"
   },
-  "homepage": "https://github.com/yourusername/expo-mini-orm#readme"
+  "homepage": "https://github.com/Manjaka2650/devia-orm#readme"
 }

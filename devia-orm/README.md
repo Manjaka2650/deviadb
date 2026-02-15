@@ -15,13 +15,13 @@ Une ORM TypeScript légère et moderne pour Expo SQLite, inspirée de Sequelize.
 ## 📦 Installation
 
 ```bash
-npm install expo-mini-orm expo-sqlite
+npm install devia-orm expo-sqlite
 ```
 
 ou
 
 ```bash
-yarn add expo-mini-orm expo-sqlite
+yarn add devia-orm expo-sqlite
 ```
 
 ## 🏗️ Configuration
@@ -42,7 +42,7 @@ Dans votre `tsconfig.json` :
 ### 2. Initialiser la base de données
 
 ```typescript
-import { Database } from "expo-mini-orm";
+import { Database } from "devia-orm";
 
 // Dans votre App.tsx ou point d'entrée
 await Database.getInstance().initialize("myapp.db");
@@ -53,7 +53,7 @@ await Database.getInstance().initialize("myapp.db");
 ### Définir un modèle
 
 ```typescript
-import { Model, Table, Column, PrimaryKey } from "expo-mini-orm";
+import { Model, Table, Column, PrimaryKey } from "devia-orm";
 
 // Définir l'interface des attributs
 interface AchatAttributes {
@@ -138,10 +138,7 @@ const achat = await Achat.findByPk(1);
 
 ```typescript
 // Mettre à jour avec WHERE
-const updated = await Achat.update(
-  { montant: 299.99 },
-  { where: { id: 1 } }
-);
+const updated = await Achat.update({ montant: 299.99 }, { where: { id: 1 } });
 
 console.log(`${updated} lignes mises à jour`);
 ```

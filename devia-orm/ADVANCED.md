@@ -1,6 +1,6 @@
 # 🚀 Guide Avancé - Fonctionnalités Bonus
 
-Ce guide explique comment implémenter des fonctionnalités avancées dans expo-mini-orm.
+Ce guide explique comment implémenter des fonctionnalités avancées dans devia-orm.
 
 ## 🎣 Hooks (Lifecycle Events)
 
@@ -38,12 +38,12 @@ class User extends Model<UserAttributes> {
       user.createdAt = new Date().toISOString();
       console.log("Before create:", user);
     },
-    
+
     afterCreate: async (user) => {
       console.log("User created:", user.id);
       // Envoyer un email de bienvenue
     },
-    
+
     beforeUpdate: async (user) => {
       user.updatedAt = new Date().toISOString();
     },
@@ -199,7 +199,7 @@ export interface Relation {
 export function HasMany(
   model: () => typeof Model,
   foreignKey: string,
-  as?: string
+  as?: string,
 ) {
   return function (target: any, propertyKey: string) {
     if (!target.constructor.relations) {
@@ -218,7 +218,7 @@ export function HasMany(
 export function BelongsTo(
   model: () => typeof Model,
   foreignKey: string,
-  as?: string
+  as?: string,
 ) {
   return function (target: any, propertyKey: string) {
     if (!target.constructor.relations) {
@@ -512,17 +512,17 @@ export const Validators = {
     validator: (value) => value !== null && value !== undefined && value !== "",
     message: "This field is required",
   }),
-  
+
   email: (): ValidationRule => ({
     validator: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value),
     message: "Invalid email format",
   }),
-  
+
   minLength: (min: number): ValidationRule => ({
     validator: (value) => typeof value === "string" && value.length >= min,
     message: `Minimum length is ${min}`,
   }),
-  
+
   min: (min: number): ValidationRule => ({
     validator: (value) => typeof value === "number" && value >= min,
     message: `Minimum value is ${min}`,
@@ -560,7 +560,7 @@ private static validate(data: any): void {
   if (!this.validations) return;
 
   const errors: string[] = [];
-  
+
   for (const [field, rules] of this.validations) {
     const value = data[field];
     for (const rule of rules) {
@@ -578,7 +578,7 @@ private static validate(data: any): void {
 
 ## 🎨 Résumé
 
-Ces fonctionnalités avancées transforment expo-mini-orm en une ORM puissante :
+Ces fonctionnalités avancées transforment devia-orm en une ORM puissante :
 
 ✅ **Hooks** - Logique avant/après opérations
 ✅ **Soft Delete** - Suppression sécurisée
