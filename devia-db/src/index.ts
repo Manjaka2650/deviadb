@@ -2,7 +2,8 @@
  * Expo Mini ORM
  * Une ORM TypeScript légère pour Expo SQLite
  */
-
+// Decorators
+import "reflect-metadata";
 // Core
 export { Database } from "./core/Database";
 export { Model } from "./core/Model";
