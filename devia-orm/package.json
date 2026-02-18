@@ -31,7 +31,7 @@
     "database",
     "sequelize"
   ],
-  "author": "Your Name",
+  "author": "Manjaka Hasina",
   "license": "MIT",
   "peerDependencies": {
     "expo-sqlite": "^15.0.0"
